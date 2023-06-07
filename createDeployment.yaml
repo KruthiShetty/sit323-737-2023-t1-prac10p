@@ -3,19 +3,20 @@ kind: Deployment
 metadata:
   name: hello-server1
   labels:
-    app: myapp
+    app: hello-server1
 spec:
-  replicas: 3
+  # modify replicas according to your case
+  replicas: 1
   selector:
     matchLabels:
-      tier: frontend
+      app: hello-server1
   template:
     metadata:
       labels:
-        tier: frontend
+        app: hello-server1
     spec:
       containers:
-      - name: mycontainer
-        image: australia-southeast2-docker.pkg.dev/sit737-388715/quickstart-docker-repo/quickstart-image:tag1
+      - name: mynode
+        image: gcr.io/sit737-388715/quickstart-docker-repo:latest
         ports:
         - containerPort: 8080
